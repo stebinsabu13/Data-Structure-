@@ -4,6 +4,8 @@ import "fmt"
 
 const arraySize = 26
 
+//node of a trie
+
 type node struct {
 	children [arraySize]*node
 	isEnd    bool
@@ -11,6 +13,8 @@ type node struct {
 type Trie struct {
 	root *node
 }
+
+//inserting into the trie
 
 func (t *Trie) insert(word string) {
 	wordlength := len(word)
@@ -25,14 +29,8 @@ func (t *Trie) insert(word string) {
 	ptr.isEnd = true
 }
 
-func (n *node) check() bool {
-	for i := 0; i < arraySize; i++ {
-		if n.children[i] != nil {
-			return true
-		}
-	}
-	return false
-}
+//deleting from a trie
+
 func (t *Trie) delete(word string) {
 	t.root.deleteHelper(word, 0)
 }
@@ -61,6 +59,17 @@ func (n *node) deleteHelper(word string, depth int) *node {
 	return n
 }
 
+func (n *node) check() bool {
+	for i := 0; i < arraySize; i++ {
+		if n.children[i] != nil {
+			return true
+		}
+	}
+	return false
+}
+
+//searching in a trie
+
 func (t *Trie) search(word string) bool {
 	wordlength := len(word)
 	ptr := t.root
@@ -73,6 +82,8 @@ func (t *Trie) search(word string) bool {
 	}
 	return ptr.isEnd
 }
+
+
 func main() {
 	var t Trie
 	t.root = &node{}
