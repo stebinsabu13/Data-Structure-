@@ -5,6 +5,8 @@ import (
 	"math"
 )
 
+//tree structure
+
 type treeNode struct {
 	data  int
 	left  *treeNode
@@ -13,6 +15,8 @@ type treeNode struct {
 type Tree struct {
 	root *treeNode
 }
+
+//insertion into BST
 
 func (t *Tree) insert(val int) {
 	if t.root == nil {
@@ -36,6 +40,8 @@ func (n *treeNode) Insert(val int) {
 		}
 	}
 }
+
+//deletion in BST
 
 func (t *Tree) delete(val int) {
 	if t.root == nil {
@@ -68,12 +74,18 @@ func (n *treeNode) Delete(val int) *treeNode {
 	}
 	return n
 }
+
+//to find the inorder successor of a node
+
 func findSuccessor(s *treeNode) *treeNode {
 	for s.left != nil {
 		s = s.left
 	}
 	return s
 }
+
+//to trim a BST to a specified limit
+
 func trimBST(root *treeNode, low int, high int) *treeNode {
 	if root == nil {
 		return nil
@@ -88,6 +100,9 @@ func trimBST(root *treeNode, low int, high int) *treeNode {
 	root.right = trimBST(root.right, low, high)
 	return root
 }
+
+//to search a value in a BST
+
 func (t *Tree) search(val int) bool {
 	if t == nil {
 		return false
@@ -107,6 +122,9 @@ func (n *treeNode) Search(val int) bool {
 		return true
 	}
 }
+
+//to get the nodes at a level
+
 func levelNodes(n *treeNode, level int) {
 	if n == nil {
 		return
@@ -118,6 +136,9 @@ func levelNodes(n *treeNode, level int) {
 		levelNodes(n.right, level-1)
 	}
 }
+
+//to get the leaf nodes
+
 func (t *Tree) leafnodes() {
 	if t == nil {
 		fmt.Println("Tree is empty")
@@ -137,6 +158,9 @@ func (n *treeNode) leafnodes() {
 		n.right.leafnodes()
 	}
 }
+
+//to get the nonleaf nodes
+
 func (t *Tree) nonleafnodes() {
 	if t == nil {
 		fmt.Println("Tree is empty")
@@ -157,6 +181,7 @@ func (n *treeNode) nonleafnodes() {
 		}
 	}
 }
+
 func (t *Tree) rightview() {
 	if t == nil {
 		fmt.Println("Tree is empty")
@@ -187,6 +212,9 @@ func (n *treeNode) leftview() {
 		fmt.Print(n.data, "-")
 	}
 }
+
+//to find the closestvalue to a value in the tree
+
 func (t *Tree) closetValue(val int) {
 	if t == nil {
 		fmt.Println("Tree is empty")
