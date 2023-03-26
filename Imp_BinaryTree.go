@@ -11,6 +11,8 @@ type treeNode struct {
 	right *treeNode
 }
 
+//inorder display
+
 func display(t *treeNode) {
 	if t == nil {
 		return
@@ -20,12 +22,17 @@ func display(t *treeNode) {
 	display(t.right)
 }
 
+//to get the tree node count
+
 func (t *treeNode) getTreeNodeCount() int {
 	if t == nil {
 		return 0
 	}
 	return t.left.getTreeNodeCount() + t.right.getTreeNodeCount() + 1
 }
+
+//to find the height of the tree
+
 func (t *treeNode) TreeDegree() int {
 	degree := 0
 	if t == nil {
@@ -35,6 +42,8 @@ func (t *treeNode) TreeDegree() int {
 	right := t.right.TreeDegree()
 	return int(math.Max(float64(left), float64(right))) + 1
 }
+
+
 func main() {
 	root := &treeNode{data: 10}
 	root.left = &treeNode{data: 9}
