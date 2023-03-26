@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+//general tree is a tree with more than two children
+
 type treeNode struct {
 	data     int
 	children []*Tree
@@ -9,6 +11,9 @@ type treeNode struct {
 type Tree struct {
 	root *treeNode
 }
+
+//queue to display the nodes in BFS
+
 type queue struct {
 	arr []*Tree
 }
@@ -19,6 +24,8 @@ func (q *queue) enqueue(node *Tree) {
 func (q *queue) dequeue() {
 	q.arr = q.arr[1:]
 }
+
+//inserting into the tree
 
 func (t *Tree) insert(node Tree) {
 	if t.root == nil {
