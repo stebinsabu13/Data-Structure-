@@ -261,15 +261,15 @@ func preorder(root *treeNode) {
 		return
 	}
 	fmt.Print(root.data, "-")
-	postorder(root.left)
-	postorder(root.right)
+	preorder(root.left)
+	preorder(root.right)
 }
 func postorder(root *treeNode) {
 	if root == nil {
 		return
 	}
-	preorder(root.left)
-	preorder(root.right)
+	postorder(root.left)
+	postorder(root.right)
 	fmt.Print(root.data, "-")
 }
 func main() {
