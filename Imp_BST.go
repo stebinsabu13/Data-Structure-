@@ -256,7 +256,7 @@ func inorder(root *treeNode) {
 	fmt.Print(root.data, "-")
 	inorder(root.right)
 }
-func postorder(root *treeNode) {
+func preorder(root *treeNode) {
 	if root == nil {
 		return
 	}
@@ -264,7 +264,7 @@ func postorder(root *treeNode) {
 	postorder(root.left)
 	postorder(root.right)
 }
-func preorder(root *treeNode) {
+func postorder(root *treeNode) {
 	if root == nil {
 		return
 	}
