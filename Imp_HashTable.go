@@ -15,6 +15,7 @@ type BucketNode struct {
 	next *BucketNode
 }
 
+//function to get the index of the key, calculating the hash index
 func hash(key string) int {
 	sum := 0
 	for _, v := range key {
@@ -22,14 +23,20 @@ func hash(key string) int {
 	}
 	return sum % arraySize
 }
+
+//inserting into the hash table
 func (h *hashTable) Insert(key string) {
 	index := hash(key)
 	h.array[index].insert(key)
 }
+
+//searching in the hash table
 func (h *hashTable) Search(key string) bool {
 	index := hash(key)
 	return h.array[index].search(key)
 }
+
+//deleting from the hash table
 func (h *hashTable) Delete(key string) {
 	index := hash(key)
 	h.array[index].delete(key)
@@ -99,7 +106,7 @@ func main() {
 	}
 	fmt.Println(h.Search("RANDY"))
 	fmt.Println(h.Search("TITUS"))
-	// h.Delete("ERIC")
+	h.Delete("ERIC")
 	h.Insert("KYLE")
 	h.Insert("JUNMIN")
 	fmt.Println(h.Search("RANDY"))
